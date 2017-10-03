@@ -4,9 +4,9 @@
     Author     : Jakob
 --%>
 
+<%@page import="ViewModel.UserInfo"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="Facade.UserController"%>
-<%@page import="BO.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,7 @@
     </head>
     <body>
         <%
-            User user = (User) session.getAttribute("user");
+            UserInfo user = (UserInfo) session.getAttribute("user");
             if (user == null) {
         %>
         You are not logged in.
@@ -35,13 +35,13 @@
 
         <%            UserController uc = new UserController();
             try {
-                ArrayList<User> users = uc.getUsers();
+                ArrayList<UserInfo> users = uc.getUsers();
                 if (users.isEmpty()) {
         %>
         No users found!
         <%
         } else {
-            for (User u : users) {
+            for (UserInfo u : users) {
                 out.println(u.getName());
 
         %>

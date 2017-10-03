@@ -4,8 +4,8 @@
     Author     : Jakob
 --%>
 
+<%@page import="ViewModel.UserInfo"%>
 <%@page import="Facade.UserController"%>
-<%@page import="BO.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,7 @@
     <body>
         <%
 
-            User user = (User) session.getAttribute("user");
+            UserInfo user = (UserInfo) session.getAttribute("user");
             if (user == null) {
 
         %>
@@ -26,7 +26,7 @@
         Insufficient rights.
         <%
         } else {
-            User userToEdit = (User) session.getAttribute("userToEdit");
+            UserInfo userToEdit = (UserInfo) session.getAttribute("userToEdit");
             if (userToEdit != null && request.getParameter("rightToAdd") != null) {
                 UserController uc = new UserController();
                 try {
